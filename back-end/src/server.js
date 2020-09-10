@@ -33,8 +33,8 @@ app.post("/v1/video", async(req, res) => {
             "likes": video.likes,
             "dislikes": video.dislikes,
             "views": video.views,
-
-
+            "tittle": video.tittle,
+            "desc":video.desc,
         }).then(value => {
             console.log(value.id)
             res.send(value.id);
