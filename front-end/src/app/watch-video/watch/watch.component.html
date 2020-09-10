@@ -1,4 +1,4 @@
-<div *ngIf="!this.data_have">
+<div style="display: flex; justify-content: center;" *ngIf="!this.data_have">
     <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="this.data_have">
@@ -13,8 +13,8 @@
                 <mat-grid-list class="title" cols="10">
                     <mat-grid-tile rowspan="1" colspan="8">
                         <div class="tiltle-div">
-                            <h2>
-                                <Title>Title</Title>
+                            <h2 *ngIf="videoOwner != null">
+                                {{title}}
                             </h2>
                         </div>
                     </mat-grid-tile>
@@ -73,7 +73,7 @@
         </div>
         <p> description </p>
         <div class="div-view-more">
-            <p [className]="'view-more'">title_view </p>
+            <p [className]="'view-more'"> </p>
         </div>
         <div class="comment-main">
             <div class="comment-total">
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div *ngIf="this.getcomment">
-                <mat-card *ngFor="let content of getcomment" class="example-card">
+                <mat-card style="margin-bottom: 10px;" *ngFor="let content of getcomment" class="example-card">
                     <mat-card-header>
                         <div mat-card-avatar class="avatar">
                             <img [src]="content.photoURL" alt="" style="width: 30px; height: 30px; border-radius: 50%;">

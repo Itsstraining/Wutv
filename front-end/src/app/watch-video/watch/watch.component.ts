@@ -27,6 +27,7 @@ export class WatchComponent implements OnInit {
   getcomment: Array<Comment> = new Array<Comment>();
   vid: string;
   src: string;
+  title: string;
   button_like = '';
   button_dislike = '';
   videoOwner;
@@ -166,6 +167,7 @@ export class WatchComponent implements OnInit {
                 this.videoinfo = data.payload.data();
                 //console.log(this.videoinfo);
                 this.src = this.videoinfo['url'];
+                this.title = this.videoinfo['tittle'];
                 //console.log(this.src);
                 this.like_count = this.videoinfo['likes'].length;
                 this.dislike_count = this.videoinfo['dislikes'].length;
