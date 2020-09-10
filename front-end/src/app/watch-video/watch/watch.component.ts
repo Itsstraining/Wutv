@@ -58,7 +58,7 @@ export class WatchComponent implements OnInit {
         docRefComment.doc(element).get().toPromise().then(async value => {
           let content = value.data()['content'];
 
-          let preasedTime = <Date>value.data()['time'].toDate()
+          let preasedTime = <Date>value.data()['time']?.toDate()
           
           await docRefUser.doc(value.data()['uid']).get().toPromise().then(valueUser => {
             let comment: Comment = {
