@@ -7,7 +7,7 @@ const ffmpeg = require('ffmpeg');
 
 const admin = require("firebase-admin");
 const serviceAccount = require("../key/key.json");
-
+const FieldValue = admin.firestore.FieldValue
 const cors = require('cors');
 const {
     firestore
@@ -35,8 +35,6 @@ app.post("/v1/video", async(req, res) => {
             "views": video.views,
             "tittle": video.tittle,
             "desc":video.desc,
-            
-
         }).then(value => {
             console.log(value.id)
             res.send(value.id);
@@ -258,6 +256,7 @@ app.post("/v1/Comment/Post", async(req, res) => {
         await db.collection("Comment").add({
             uid: Comment.uid,
             content: Comment.content.comment,
+            time: FieldValue.serverTimestamp()
         }).then(async data => {
             let cid = data.id;
             await db.collection("videos").doc(Comment.vid).update({
